@@ -5,6 +5,13 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 	def setup
 		@base_title="Ruby on Rails Tutorial Sample App"
 	end
+
+  test "should get home without home" do
+    get static_pages_home_url
+    assert_response :success
+    assert_select "title", "Ruby on Rails Tutorial Sample App"
+  end
+
   test "should get home" do
     get static_pages_home_url
     assert_response :success
@@ -21,6 +28,8 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "title", "About | #{@base_title}"
   end
+
+
 
 
 end
