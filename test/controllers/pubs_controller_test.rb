@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PubsControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get pubs_new_url
+    get new_pub_url
     assert_response :success
   end
 

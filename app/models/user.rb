@@ -12,7 +12,7 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  has_many :pubs
+  has_many :pubs, dependent: :destroy
 
 	
 	def User.digest(string)

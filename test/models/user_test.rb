@@ -66,6 +66,14 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.authenticated?(:remember, '')
   end
 
+  test "associated pubs should be destroyed" do
+    @user.save
+    @user.pubs.create!(name: "Lorem ipsum", address: "uelaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    assert_difference 'Pub.count', -1 do
+      @user.destroy
+    end
+  end
+
 
 
 end
