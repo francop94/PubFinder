@@ -7,9 +7,7 @@
     <a href="#">PUB FINDER</a>
     web application.
   </h2>
-  <% if logged_in? %>
-
-  <% else %>
+  <% if !logged_in? %>
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 <% end %>
 </div>
