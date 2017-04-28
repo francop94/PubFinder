@@ -13,9 +13,6 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-
-  def new
-  end
   def show 
   	@user = User.find(params[:id])
   	#debugger
