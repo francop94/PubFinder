@@ -8,7 +8,20 @@
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", help_path %></li>
         <% if logged_in? %>
+          <% if @current_user.pubs.count > 0 %>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Your pubs <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <% for pub in @current_user.pubs %>
+              <li><%= link_to pub.name, pub_path(pub.id.to_s) %></li>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
           <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "All pubs", pubs_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>

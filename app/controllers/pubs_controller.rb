@@ -1,4 +1,5 @@
 class PubsController < ApplicationController
+	before_action :logged_in_user, only:[:create]
   def new
   	@pub = Pub.new
   end
@@ -11,6 +12,14 @@ class PubsController < ApplicationController
   	else
   		render 'new'
   	end
+  end
+
+  def show
+    @pub = Pub.find(params[:id])
+  end
+
+  def index
+    @pubs = Pub.all
   end
 
     private
