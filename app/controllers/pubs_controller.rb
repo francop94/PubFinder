@@ -1,5 +1,7 @@
 class PubsController < ApplicationController
-	before_action :logged_in_user, only:[:create]
+	before_action :logged_in_user, only:[:create, :index, :update, :destroy, :edit]
+   # before_action :admin_user,     only: :destroy
+
   def new
   	@pub = Pub.new
   end
@@ -20,6 +22,12 @@ class PubsController < ApplicationController
     @microposts = @pub.user.microposts.paginate(page: params[:page])
 
 
+  end
+
+    def destroy
+    Pub.find(params[:id]).destroy
+    flash[:success] = "Pub deleted"
+    redirect_to root_url
   end
 
   def index
