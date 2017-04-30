@@ -31,7 +31,7 @@ You are the owner of this pub
   </div>
 
     <% if current_user.admin? or current_user == @pub.user %>
-    <%= link_to "Delete this pub",@pub, method: :delete %>
-  <% end %>
+    <%= button_to "Delete this pub", @pub, method: :delete, class: 'btn btn-primary'  %>
+    <% end %>
 
 </div>
