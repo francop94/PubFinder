@@ -27,5 +27,4 @@ Rails.application.routes.draw do
   resources :pubs
   resources :microposts,          only: [:create, :destroy]
 
-
 end
