@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   has_many :pubs, dependent: :destroy
   has_many :microposts, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
 
 	

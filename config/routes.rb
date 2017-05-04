@@ -26,7 +26,10 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :pubs do
     resources :microposts
+    resources :reviews
   end
   resources :microposts,          only: [:create, :destroy]
+  resources :reviews,          only: [:create, :destroy]
+
 
 end

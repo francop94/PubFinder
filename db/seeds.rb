@@ -32,11 +32,27 @@ User.create!(name:  "Example User",
                activated: true,
                activated_at: Time.zone.now)
 end
-
+  20.times do |n| 
+    name = Faker::Name.title
+    address = Faker::Address.street_name
+    user_id = n+1
+    Pub.create!(name: name, 
+                address: address,
+                user_id: user_id)
+end
   users = User.order(:created_at).take(6)
+  pubs = Pub.order(:created_at).take(6)
 50.times do
   content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content) }
+  users.each { |user| user.microposts.create!(content: content, pub_id: pubs.sample.id) }
 end
+
+  users = User.order(:created_at).take(6)
+  pubs = Pub.order(:created_at).take(6)
+  25.times do
+    content = Faker::Lorem.sentence(7)
+    users.each{ |user| user.reviews.create!(content: content, pub_id: pubs.sample.id) }
+end
+
 
 
