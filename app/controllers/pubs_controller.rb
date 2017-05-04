@@ -17,7 +17,7 @@ class PubsController < ApplicationController
   end
 
   def show
-    $pub = Pub.find(params[:id])
+    # $pub = Pub.find(params[:id])
     @pub = Pub.find(params[:id])
     @micropost = current_user.microposts.build if logged_in?
     @microposts = @pub.user.microposts.paginate(page: params[:page])

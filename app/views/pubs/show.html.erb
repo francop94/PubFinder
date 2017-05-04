@@ -22,12 +22,12 @@ You are the owner of this pub
 <% else %>
 <% end %>
     <div class="col-md-8">
-    <% if @pub.user.microposts.any? %>
-      <h3>Microposts (<%= @pub.user.microposts.count %>)</h3>
+    <% if @pub.microposts.any? %>
+      <h3>Microposts (<%= @pub.microposts.count %>)</h3>
       <ol class="microposts">
-        <%= render @microposts %>
+        <%= render @pub.microposts %>
       </ol>
-      <%= will_paginate @microposts %>
+      <%= will_paginate @microposts if @pub.microposts.count > 15%>
     <% end %>
   </div>
 </div>
