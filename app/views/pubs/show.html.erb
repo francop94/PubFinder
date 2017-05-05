@@ -1,4 +1,7 @@
 <% provide(:title, @pub.name) %>
+  <% if logged_in? && current_user == @pub.user%>
+  You are the owner of this pub!
+  <% end %>
 <div class="row">
   <aside class="col-md-4">
     <section class="pub_info">
@@ -24,7 +27,7 @@
     <% if @pub.microposts.any? %>
       <h3>Microposts (<%= @pub.microposts.count %>)</h3>
       <ol class="microposts">
-        <%= render @pub.microposts %>
+        <%= render @microposts %>
       </ol>
       <%= will_paginate @microposts%>
     <% end %>

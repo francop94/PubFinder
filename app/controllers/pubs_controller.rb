@@ -1,6 +1,6 @@
 class PubsController < ApplicationController
 	before_action :logged_in_user, only:[:create, :index, :update, :destroy, :edit]
-   # before_action :admin_user,     only: :destroy
+  before_action :admin_user,     only: :destroy
 
   def new
   	@pub = Pub.new
@@ -21,8 +21,8 @@ class PubsController < ApplicationController
     @pub = Pub.find(params[:id])
     @micropost = current_user.microposts.build if logged_in?
     @review = current_user.reviews.build if logged_in?
-    @microposts = @pub.user.microposts.paginate(page: params[:page])
-    @reviews = @pub.reviews.paginate(page: params[:page])
+    @microposts = @pub.microposts.paginate(page: params[:page], :per_page => 15)
+    @reviews = @pub.reviews.paginate(page: params[:page], :per_page => 15)
 
 
   end
