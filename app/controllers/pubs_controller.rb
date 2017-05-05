@@ -51,6 +51,27 @@ class PubsController < ApplicationController
     end
   end
 
+
+  def favorite
+    @pub = Pub.find(params[:id])
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @pub
+      flash[:success] = "You favorited " + @pub.name
+      redirect_to :back
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@pub)
+      flash[:success] = "You unfavorited " + @pub.name
+      redirect_to :back
+
+    else
+      # Type missing, nothing happens
+      flash[:success] = "Nothing happened"
+      redirect_to :back
+    end
+  end
+
     private
 
   	def pub_params

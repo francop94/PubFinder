@@ -11,6 +11,7 @@
       </h1>
     </section>
   </aside>
+  
   <% if logged_in? && current_user == @pub.user%>
   <div class="row">
     <aside class="col-md-4">
@@ -40,6 +41,11 @@
         <%= render 'shared/review_form' %>
       </section>
     </aside>
+    <% if current_user.favorites.include?(@pub) %>
+    <%= link_to "Unfavorite", favorite_pub_path(@pub, type: "unfavorite"), method: :put, class: 'btn btn-primary'%>
+    <% else %>
+      <%= link_to "Favorite",   favorite_pub_path(@pub, type: "favorite"), method: :put, class: 'btn btn-primary' %>
+    <% end %>
   </div>
 <% else %>
 <% end %>

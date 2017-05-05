@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :pubs do
     resources :microposts
     resources :reviews
+    put :favorite, on: :member
   end
   resources :microposts,          only: [:create, :destroy]
   resources :reviews,          only: [:create, :destroy]

@@ -7,6 +7,15 @@
     <a href="#">PUB FINDER</a>
     web application.
   </h2>
+      <div class="col-md-8">
+    <% if current_user.favorites.count > 0 %>
+      <h3>Your favorite pubs (<%= current_user.favorites.count %>)</h3>
+      <ol class="favorites">
+        <%= render @current_user.favorites %>
+      </ol>
+    <% end %>
+  </div>
+</div>
   <% if !logged_in? %>
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 <% end %>

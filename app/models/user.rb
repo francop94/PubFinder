@@ -16,6 +16,9 @@ class User < ApplicationRecord
   has_many :microposts, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
+  has_many :favorite_pubs
+  has_many :favorites, through: :favorite_pubs, source: :pub
+
 
 	
 	def User.digest(string)
