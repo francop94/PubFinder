@@ -34,7 +34,7 @@ class PubsController < ApplicationController
   end
 
   def index
-    @pubs = Pub.all
+    @pubs = Pub.all.paginate(page: params[:page], :per_page => 15)
   end
 
   def edit 
