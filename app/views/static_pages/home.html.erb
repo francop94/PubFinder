@@ -21,4 +21,13 @@
       </ol>
     <% end %>
   </div>
+   <div class="col-md-8">
+    <% if current_user.visiteds.count > 0 %>
+      <h3>Your visited this pubs (<%= current_user.visiteds.count %>)</h3>
+      <ol class="visiteds">
+        <%= render @current_user.visiteds %>
+      </ol>
+    <% end %>
+  </div>
+
   <% end %>

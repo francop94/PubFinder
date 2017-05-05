@@ -8,4 +8,7 @@ class Pub < ApplicationRecord
 
   has_many :favorite_pubs
   has_many :favorited_by, through: :favorite_pubs, source: :user
+
+  has_many :visited_pubs 
+  has_many :visiteds_by, through: :visited_pubs, source: :pub
 end

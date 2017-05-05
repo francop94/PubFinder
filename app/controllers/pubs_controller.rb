@@ -72,6 +72,26 @@ class PubsController < ApplicationController
     end
   end
 
+
+  def visited
+    @pub = Pub.find(params[:id])
+    type = params[:type]
+    if type == "visited"
+      current_user.visiteds << @pub
+      flash[:success] = "You visited " + @pub.name
+      redirect_to :back
+
+    elsif type == "not visited"
+      current_user.visiteds.delete(@pub)
+      flash[:success] = "You did not visit " + @pub.name
+      redirect_to :back
+
+    else
+      # Type missing, nothing happens
+      redirect_to :back
+    end
+  end
+
     private
 
   	def pub_params

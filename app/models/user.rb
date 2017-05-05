@@ -19,6 +19,9 @@ class User < ApplicationRecord
   has_many :favorite_pubs
   has_many :favorites, through: :favorite_pubs, source: :pub
 
+  has_many :visited_pubs # just the 'relationships'
+  has_many :visiteds, through: :visited_pubs, source: :pub
+
 
 	
 	def User.digest(string)
