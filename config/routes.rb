@@ -30,8 +30,10 @@ Rails.application.routes.draw do
     put :favorite, on: :member
     put :visited, on: :member
   end
-  resources :microposts,          only: [:create, :destroy]
-  resources :reviews,          only: [:create, :destroy]
+  resources :microposts,          only: [:create, :destroy, :edit, :update]
+  resources :reviews,          only: [:create, :destroy, :edit, :update]
+
+
 
 
 end

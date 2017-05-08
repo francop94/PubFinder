@@ -15,7 +15,28 @@ class MicropostsController < ApplicationController
     end
   end
 
-  def destroy
+    def destroy
+    Micropost.find(params[:id]).destroy
+    flash[:success] = "Micropost deleted"
+    redirect_to(:back)
+  end
+
+
+    def edit 
+    @micropost = Micropost.find(params[:id])
+
+  end
+
+  def update
+    @micropost = Micropost.find(params[:id])
+    
+    if @micropost.update_attributes(micropost_params)
+      flash[:success] = "Micropost updated"
+      redirect_to pub_path(@micropost.pub)
+    else
+      flash[:warning] = "Micropost was not modified"
+      redirect_to(:back)
+    end
   end
 
     private

@@ -13,8 +13,29 @@ before_action :logged_in_user, only: [:create, :destroy]
     end
   end
 
-  def destroy
+    def destroy
+    Review.find(params[:id]).destroy
+    flash[:success] = "Review deleted"
+    redirect_to(:back)
   end
+
+  def edit 
+    @review = Review.find(params[:id])
+
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    
+    if @review.update_attributes(review_params)
+      flash[:success] = "Review updated"
+      redirect_to pub_path(@review.pub)
+    else
+      flash[:warning] = "Review was not modified"
+      redirect_to(:back)
+    end
+  end
+
 
   private
 
