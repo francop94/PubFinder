@@ -8,4 +8,7 @@
     | <%= link_to "delete", answer, method: :delete,
                                   data: { confirm: "You sure?" } %>
   <% end %>
+      <% if answer.user == current_user %>
+    | <%= link_to "edit", edit_answer_path(answer) %>
+  <% end %>
 </li>

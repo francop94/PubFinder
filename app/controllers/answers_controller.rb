@@ -20,12 +20,25 @@ class AnswersController < ApplicationController
   end
 
   def edit
+    @answer = Answer.find(params[:id])
   end
 
   def update
+    @answer = Answer.find(params[:id])
+    
+    if @answer.update_attributes(answer_params)
+      flash[:success] = "Answer updated"
+      redirect_to review_path(@answer.review)
+    else
+      flash[:warning] = "Answer was not modified"
+      redirect_to(:back)
+    end
   end
 
   def destroy
+    Answer.find(params[:id]).destroy
+    flash[:success] = "Answer deleted"
+    redirect_to(:back)
   end
 
 

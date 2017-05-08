@@ -1,2 +1,10 @@
-<h1>Answers#edit</h1>
-<p>Find me in app/views/answers/edit.html.erb</p>
+Your answer content is: 
+<span class="content"><%= @answer.content %></span>
+
+<div class="row">
+<aside class="col-md-4">
+      <section class="answer_form">
+        <%= render 'shared/answer_form' %>
+      </section>
+    </aside>
+</div>
