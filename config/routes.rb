@@ -31,9 +31,11 @@ Rails.application.routes.draw do
     put :visited, on: :member
   end
   resources :microposts,          only: [:create, :destroy, :edit, :update]
-  resources :reviews,          only: [:create, :destroy, :edit, :update]
+  resources :reviews do
+    resources :answers
+  end
 
-
+  resources :answers
 
 
 end

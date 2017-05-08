@@ -19,9 +19,14 @@ before_action :logged_in_user, only: [:create, :destroy]
     redirect_to(:back)
   end
 
+
+  def show
+  	@review = Review.find(params[:id])
+  	@answer = Answer.new
+  end
+
   def edit 
     @review = Review.find(params[:id])
-
   end
 
   def update

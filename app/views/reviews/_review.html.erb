@@ -12,4 +12,8 @@
     | <%= link_to "edit", edit_review_path(review) %>
   <% end %>
 
+   <% if logged_in? %>
+    | <%= link_to "Answers"+'('+review.answers.count.to_s+')', review_path(review)  %>
+  <% end %>
+
 </li>

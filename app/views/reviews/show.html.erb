@@ -1,0 +1,19 @@
+The review content is: 
+<span class="content"><%= @review.content %></span>
+<br>
+<div class="col-md-0">
+    <% if @review.answers.any? %>
+      <h3>Answers (<%= @review.answers.count %>)</h3>
+      <ol class="answers">
+        <%= render @review.answers %>
+      </ol>
+    <% end %>
+  </div>
+
+<div class="row">
+<aside class="col-md-4">
+      <section class="review_form">
+        <%= render 'shared/answer_form' %>
+      </section>
+    </aside>
+</div>

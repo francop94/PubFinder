@@ -22,6 +22,9 @@ class User < ApplicationRecord
   has_many :visited_pubs # just the 'relationships'
   has_many :visiteds, through: :visited_pubs, source: :pub
 
+  has_many :answers, dependent: :destroy
+
+
 
 	
 	def User.digest(string)
