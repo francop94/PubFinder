@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508104911) do
+ActiveRecord::Schema.define(version: 20170510114239) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -44,9 +44,10 @@ ActiveRecord::Schema.define(version: 20170508104911) do
   create_table "pubs", force: :cascade do |t|
     t.string   "address"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "name"
+    t.boolean  "validated",  default: false
     t.index ["user_id", "created_at"], name: "index_pubs_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_pubs_on_user_id"
   end

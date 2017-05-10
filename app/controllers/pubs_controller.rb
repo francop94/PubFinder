@@ -24,7 +24,6 @@ class PubsController < ApplicationController
     @microposts = @pub.microposts.paginate(page: params[:page], :per_page => 15)
     @reviews = @pub.reviews.paginate(page: params[:page], :per_page => 15)
 
-
   end
 
     def destroy
@@ -72,6 +71,14 @@ class PubsController < ApplicationController
     end
   end
 
+    def validatee
+    pub = Pub.find(params[:id])
+    pub.validated = true
+    pub.save
+    redirect_to root_path
+  end
+  helper_method :validatee
+
 
   def visited
     @pub = Pub.find(params[:id])
@@ -91,6 +98,7 @@ class PubsController < ApplicationController
       redirect_to :back
     end
   end
+
 
     private
 

@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     resources :reviews
     put :favorite, on: :member
     put :visited, on: :member
+    member do
+      get :validatee
+    end 
   end
   resources :microposts,          only: [:create, :destroy, :edit, :update]
   resources :reviews do

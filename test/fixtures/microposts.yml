@@ -14,11 +14,13 @@ cat_video:
   content: "Sad cats are sad: http://youtu.be/PKffm2uI4dk"
   created_at: <%= 2.hours.ago %>
   user: michael
+  pub: irish
 
 most_recent:
   content: "Writing a short test"
   created_at: <%= Time.zone.now %>
   user: michael
+
 
 <% 30.times do |n| %>
 micropost_<%= n %>:

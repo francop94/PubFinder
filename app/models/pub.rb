@@ -11,4 +11,13 @@ class Pub < ApplicationRecord
 
   has_many :visited_pubs 
   has_many :visiteds_by, through: :visited_pubs, source: :pub
+
+    def validatee
+    	self.validated = true
+    	self.save
+    # redirect_to root_path
+  end
+
+
 end
+

@@ -9,6 +9,7 @@ class MicropostTest < ActiveSupport::TestCase
     @user = users(:michael)
     # This code is not idiomatically correct.
     @micropost = @user.microposts.build(content: "Lorem ipsum")
+    @micropost.pub = pubs(:irish)
   end
 
   test "should be valid" do

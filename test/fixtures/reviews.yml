@@ -9,3 +9,12 @@ two:
   content: MyText
   user: two
   pub: two
+
+some_review: 
+  content: A me questo pub è piaciuto tantissimo
+  user: michael
+  pub: irish
+  id: 1
+
+
+

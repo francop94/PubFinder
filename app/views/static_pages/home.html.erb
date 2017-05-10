@@ -12,7 +12,7 @@
 <% end %>
 </div>
 
- <% if logged_in? %>
+ <% if logged_in? && !current_user.admin? %>
  <div class="col-md-8">
     <% if current_user.favorites.count > 0 %>
       <h3>Your favorite pubs (<%= current_user.favorites.count %>)</h3>
@@ -31,3 +31,14 @@
   </div>
 
   <% end %>
+
+ <% if logged_in? && current_user.admin? %>
+      <h3>Pubs still to validate </h3>
+	<ul class="pubs">
+	<%for pub in Pub.all %>
+	<% if !pub.validated%>
+    <%= render pub %>
+    	<%end%>
+	<%end%> 
+    </ul>
+ <% end %>

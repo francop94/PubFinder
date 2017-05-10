@@ -1,34 +1,29 @@
 require 'test_helper'
 
 class AnswersControllerTest < ActionDispatch::IntegrationTest
-  test "should get create" do
-    get answers_create_url
-    assert_response :success
-  end
+
+def setup
+    @answer = answers(:some_answer)
+    @review = reviews(:some_review)
+    @answer_owner = users(:archer)
+    @pub = pubs(:irish)
+end
+
 
   test "should get show" do
-    get answers_show_url
+    get review_answer_path(reviews(:some_review), answers(:some_answer))
     assert_response :success
   end
 
   test "should get index" do
-    get answers_index_url
+    get answers_path
     assert_response :success
   end
 
   test "should get edit" do
-    get answers_edit_url
+    get edit_review_answer_path(reviews(:some_review), answers(:some_answer))
     assert_response :success
   end
 
-  test "should get update" do
-    get answers_update_url
-    assert_response :success
-  end
-
-  test "should get destroy" do
-    get answers_destroy_url
-    assert_response :success
-  end
 
 end

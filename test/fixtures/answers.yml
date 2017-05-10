@@ -9,3 +9,9 @@ two:
   content: MyText
   user: two
   review: two
+
+some_answer:
+  content: questa è una risposta alla review
+  user: archer
+  review: some_review
+  

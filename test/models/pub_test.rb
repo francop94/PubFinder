@@ -23,14 +23,14 @@ class PubTest < ActiveSupport::TestCase
   	assert_not @pub.valid?
   end
 
-  test "address should be at most 140 characters" do
-  	@pub.address = "a"*141
-  	assert_not @pub.valid?
-  end
+#  test "address should be at most 140 characters" do
+ # 	@pub.address = "a"*141
+  #	assert_not @pub.valid?
+  #end
 
-  test "address shoud be at least 20 characters" do
-  	@pub.address = "a"*19
-  	assert_not @pub.valid?
-  end
+  #test "address shoud be at least 20 characters" do
+  #	@pub.address = "a"*19
+  #	assert_not @pub.valid?
+  # end
 
 end
