@@ -1,5 +1,6 @@
 class MicropostsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: [:create, :destroy, :edit, :update]
+  
 
   def create
   	@pub = Pub.find(params[:pub_id])

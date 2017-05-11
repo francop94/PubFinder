@@ -44,7 +44,9 @@ end
   pubs = Pub.order(:created_at).take(6)
 50.times do
   content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content, pub_id: pubs.sample.id) }
+  # users.each { |user| user.microposts.create!(content: content, pub_id: pubs.sample.id) }
+  # voglio che per ogni pub creo un micropost, quindi il micropost appartiene al suo proprietario
+  pubs.each {|pub| pub.microposts.create!(content: content, user_id: pub.user.id)}
 end
 
   users = User.order(:created_at).take(6)
@@ -53,6 +55,21 @@ end
     content = Faker::Lorem.sentence(7)
     users.each{ |user| user.reviews.create!(content: content, pub_id: pubs.sample.id) }
 end
+# sto creando alcune risposte
+  reviews = Review.order(:created_at).take(88)
+  for i in (0..5) do
+    content = "This is an answer "+i.to_s+'.'
+    reviews.each {|review| review.answers.create!(content: content, user_id: review.user.id)}
+end
+# sto validando alcuni pub
+  pubs = Pub.all
+  for i in (1..10) do
+    pubs.sample.validatee
+end
+
+
+
+
 
 
 

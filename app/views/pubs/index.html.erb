@@ -3,7 +3,6 @@
 	<%for pub in Pub.all %>
 	<% if pub.validated%>
         <%= render pub %>
-
     	<%end%>
 	<%end%> 
         <%= will_paginate @pubs %>

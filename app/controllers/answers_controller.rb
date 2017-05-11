@@ -8,8 +8,8 @@ class AnswersController < ApplicationController
       flash[:success] = "Answer created!"
       redirect_to(:back)
     else
-      flash[:warning] = "Cannot post your answer"
-      render 'static_pages/home'
+      flash[:warning] = "Answer not posted, the content should have at least 20 characters."
+      redirect_to(:back)
     end
   end
 

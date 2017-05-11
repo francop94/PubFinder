@@ -1,6 +1,8 @@
 <% provide(:title, @pub.name) %>
   <% if logged_in? && current_user == @pub.user%>
   You are the owner of this pub!
+<% if !@pub.validated %> The pub still has to be validated by the administrator!
+<% end %>
   <% end %>
 <div class="row">
   <aside class="col-md-4">

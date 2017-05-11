@@ -23,6 +23,12 @@ class PubTest < ActiveSupport::TestCase
   	assert_not @pub.valid?
   end
 
+  test "pub should not be validated immediatly after its creation" do
+    @pub = @user.pubs.build(address: "via tiburtina, 27, Roma", name: "Irish pub")
+    assert_not @pub.validated?
+  end
+
+
 #  test "address should be at most 140 characters" do
  # 	@pub.address = "a"*141
   #	assert_not @pub.valid?
