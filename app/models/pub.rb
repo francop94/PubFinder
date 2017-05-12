@@ -15,6 +15,20 @@ class Pub < ApplicationRecord
 
   has_many :menus, dependent: :destroy
 
+  def avg_votes
+
+    sum = 0
+    self.reviews.each do |review|
+      sum = sum + review.vote
+    end
+    sum = sum.to_f
+    if self.reviews.count > 0
+      return (sum/self.reviews.count).round(2)
+    else return 0
+    end
+  end
+
+
     def validatee
     	self.validated = true
     	self.save

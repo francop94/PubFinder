@@ -6,5 +6,6 @@ class Review < ApplicationRecord
   validates :pub_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
   has_many :answers, dependent: :destroy
+  validates :vote, presence: true
 
 end

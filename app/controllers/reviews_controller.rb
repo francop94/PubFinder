@@ -45,6 +45,6 @@ before_action :logged_in_user, only: [:create, :destroy, :edit, :update, :show]
   private
 
     def review_params
-      params.require(:review).permit(:content)
+      params.require(:review).permit(:content, :vote)
     end
 end

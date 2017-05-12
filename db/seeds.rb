@@ -53,7 +53,8 @@ end
   pubs = Pub.order(:created_at).take(6)
   25.times do
     content = Faker::Lorem.sentence(7)
-    users.each{ |user| user.reviews.create!(content: content, pub_id: pubs.sample.id) }
+    vote = rand(1..5)
+    users.each{ |user| user.reviews.create!(content: content, pub_id: pubs.sample.id, vote: vote) }
 end
 # sto creando alcune risposte
   reviews = Review.order(:created_at).take(88)
