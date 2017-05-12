@@ -5,6 +5,11 @@
 <% end %>
   <% end %>
     <%= link_to "Upload menu", new_pub_menu_path(@pub), class: 'btn btn-primary'  %>
+    <% if @pub.menus.count > 0 %>
+    <%= link_to "Delete menu", pub_menu_path(@pub, @pub.menus.first), method: :delete,
+                                  data: { confirm: "You sure?" }, class: 'btn btn-primary' %>
+    <%= link_to "See menu", @pub.menus.first.document.url, class: 'btn btn-primary', target: '_blank'%>
+    <% end %> 
 <div class="row">
   <aside class="col-md-4">
     <section class="pub_info">

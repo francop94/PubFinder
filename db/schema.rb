@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511124228) do
+ActiveRecord::Schema.define(version: 20170512131100) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20170511124228) do
     t.string   "document_content_type"
     t.integer  "document_file_size"
     t.datetime "document_updated_at"
+    t.integer  "pub_id"
+    t.index ["pub_id"], name: "index_menus_on_pub_id"
   end
 
   create_table "microposts", force: :cascade do |t|

@@ -5,17 +5,26 @@ class MenusController < ApplicationController
  end
 
  def new
-  @menu = Menu.new
+
   @pub = Pub.find(params[:pub_id])
+  if !@pub.menus.empty?
+    flash[:warning] = "Before you add a new menu, you have to delete the existing one!"
+    redirect_to @pub
+  end
+
+  @menu = Menu.new
 
  end
 
 
  def create
-  @menu = Menu.new(menu_params)
+  @pub = Pub.find(params[:pub_id])
+  input = menu_params.merge(pub: @pub)
+  @menu = @pub.menus.build(input)
+
   if @menu.save
    flash[:success] = "Successfully added new menu!"
-   redirect_to root_path
+   redirect_to @pub
   else
    flash[:alert] = "Error adding new menu!"
    render :new
@@ -23,10 +32,11 @@ class MenusController < ApplicationController
  end
 
  def destroy
+  @pub = Pub.find(params[:pub_id])
   @menu = Menu.find(params[:id])
     if @menu.destroy
       flash[:success] = "Successfully deleted menu!"
-      redirect_to root_path
+      redirect_to @pub
     else
       flash[:alert] = "Error deleting menu!"
     end
@@ -36,7 +46,7 @@ class MenusController < ApplicationController
 
  #Permitted parameters when creating a photo. This is used for security reasons.
  def menu_params
-  params.require(:menu).permit(:title, :document)
+  params.require(:menu).permit(:title, :document, :pub)
  end
 
 end

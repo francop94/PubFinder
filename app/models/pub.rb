@@ -12,6 +12,8 @@ class Pub < ApplicationRecord
   has_many :visited_pubs 
   has_many :visiteds_by, through: :visited_pubs, source: :pub
 
+  has_many :menus, dependent: :destroy
+
     def validatee
     	self.validated = true
     	self.save
