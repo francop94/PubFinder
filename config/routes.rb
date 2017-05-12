@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :pubs do
     resources :microposts
     resources :reviews
+    resources :menus
     put :favorite, on: :member
     put :visited, on: :member
     member do
@@ -39,6 +40,10 @@ Rails.application.routes.draw do
   end
 
   resources :answers
+
+	
+
+
 
 
 end

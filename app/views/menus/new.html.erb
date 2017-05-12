@@ -1,0 +1,13 @@
+<div class="page-header"><h1>Upload Menu</h1></div>
+
+<%= form_for ([@pub, @menu]), html: { multipart: true } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= text_field :title, class: 'form-control' %>
+    <%= f.label :document %>
+    <%= f.file_field :document, class: 'form-control' %>
+        <%= f.submit 'Upload Menu', class: 'btn btn-primary' %>
+    </div>
+<% end %>

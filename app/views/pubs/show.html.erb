@@ -4,13 +4,16 @@
 <% if !@pub.validated %> The pub still has to be validated by the administrator!
 <% end %>
   <% end %>
+    <%= link_to "Upload menu", new_pub_menu_path(@pub), class: 'btn btn-primary'  %>
 <div class="row">
   <aside class="col-md-4">
     <section class="pub_info">
       <h1>
         <%= @pub.name %>
         <%= @pub.address %>
-      </h1>
+        <br>
+        This pub was visited <%= pluralize((@pub.visited_pubs.count), "time") %>
+        </h1>
     </section>
   </aside>
   
@@ -43,6 +46,9 @@
         <%= render 'shared/review_form' %>
       </section>
     </aside>
+    <% if logged_in?%>
+    <%= link_to "See menu", '#', class: 'btn btn-primary'%>
+    <% end %>
     <% if current_user.favorites.include?(@pub) %>
     <%= link_to "Unfavorite", favorite_pub_path(@pub, type: "unfavorite"), method: :put, class: 'btn btn-primary'%>
     <% else %>
