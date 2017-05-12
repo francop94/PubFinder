@@ -1,5 +1,9 @@
 <li id="answer-<%= answer.id %>">
+  <% if answer.user == answer.review.pub.user %>
+	  <span class="answer"><%= link_to answer.review.pub.name, answer.review.pub %></span>
+<% else %>
   <span class="answer"><%= link_to answer.user.name, answer.user %></span>
+<% end %>
   <span class="content"><%= answer.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(answer.created_at) %> ago.
