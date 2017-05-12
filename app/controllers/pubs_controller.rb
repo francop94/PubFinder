@@ -103,6 +103,6 @@ class PubsController < ApplicationController
     private
 
   	def pub_params
-      params.require(:pub).permit(:name, :address)  
+      params.require(:pub).permit(:name, :address, :website, :description)  
   	end
 end

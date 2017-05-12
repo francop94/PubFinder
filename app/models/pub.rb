@@ -6,6 +6,7 @@ class Pub < ApplicationRecord
   validates :address, presence: true
   validates :name, presence: true
 
+
   has_many :favorite_pubs
   has_many :favorited_by, through: :favorite_pubs, source: :user
 
