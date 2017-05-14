@@ -12,6 +12,7 @@ class PubsController < ApplicationController
   		flash[:success] = "Your pub was created!"
   		redirect_to root_url
   	else
+                flash[:danger] = "Error in creating the pub!"
   		render 'new'
   	end
   end
@@ -46,6 +47,7 @@ class PubsController < ApplicationController
       flash[:success] = "Pub updated"
       redirect_to @pub
     else
+      flash[:danger] = "Error in updating the pub!"
       render 'edit'
     end
   end
@@ -66,7 +68,7 @@ class PubsController < ApplicationController
 
     else
       # Type missing, nothing happens
-      flash[:success] = "Nothing happened"
+      flash[:danger] = "Nothing happened"
       redirect_to :back
     end
   end
@@ -94,7 +96,7 @@ class PubsController < ApplicationController
       redirect_to :back
 
     else
-      # Type missing, nothing happens
+      flash[:danger] = "Nothing happened"
       redirect_to :back
     end
   end

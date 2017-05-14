@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
       flash[:success] = "Answer created!"
       redirect_to(:back)
     else
-      flash[:warning] = "Answer not posted, the content should have at least 20 characters."
+      flash[:danger] = "Answer not posted, the content should have at least 20 characters."
       redirect_to(:back)
     end
   end
@@ -30,7 +30,7 @@ class AnswersController < ApplicationController
       flash[:success] = "Answer updated"
       redirect_to review_path(@answer.review)
     else
-      flash[:warning] = "Answer was not modified"
+      flash[:danger] = "Answer was not modified"
       redirect_to(:back)
     end
   end

@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20170512151100) do
   end
 
   create_table "menus", force: :cascade do |t|
-    t.string   "title"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.string   "image_file_name"

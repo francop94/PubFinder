@@ -13,7 +13,7 @@ class Pub < ApplicationRecord
   has_many :visited_pubs 
   has_many :visiteds_by, through: :visited_pubs, source: :pub
 
-  has_many :menus, dependent: :destroy
+  has_one :menu, dependent: :destroy
 
   def avg_votes
 

@@ -9,6 +9,7 @@ before_action :logged_in_user, only: [:create, :destroy, :edit, :update, :show]
       flash[:success] = "Review created!"
       redirect_to(:back)
     else
+      flash[:danger] = "Error in creating the review!"
       render 'static_pages/home'
     end
   end
@@ -36,7 +37,7 @@ before_action :logged_in_user, only: [:create, :destroy, :edit, :update, :show]
       flash[:success] = "Review updated"
       redirect_to pub_path(@review.pub)
     else
-      flash[:warning] = "Review was not modified"
+      flash[:danger] = "Review was not modified"
       redirect_to(:back)
     end
   end

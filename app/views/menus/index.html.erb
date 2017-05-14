@@ -7,9 +7,6 @@
       <%= link_to "See menu", menu.document.url, target: '_blank' %>
       <%= link_to 'Remove', menu_path(menu), class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %>
     </div>
-    <div class="media-body">
-      <h4 class="media-heading"><%= menu.title %></h4>
-    </div>
   <% end %>
 </div>
 

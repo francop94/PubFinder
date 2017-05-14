@@ -35,7 +35,7 @@ class MicropostsController < ApplicationController
       flash[:success] = "Micropost updated"
       redirect_to pub_path(@micropost.pub)
     else
-      flash[:warning] = "Micropost was not modified"
+      flash[:danger] = "Micropost was not modified"
       redirect_to(:back)
     end
   end
