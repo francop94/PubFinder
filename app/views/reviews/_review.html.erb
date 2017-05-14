@@ -3,7 +3,7 @@
   <span class="content"><%= review.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(review.created_at) %> ago.
-  </span>
+  
       <% if current_user.admin? or review.user == current_user %>
     | <%= link_to "delete", review, method: :delete,
                                   data: { confirm: "You sure?" } %>
@@ -15,5 +15,6 @@
    <% if logged_in? %>
     | <%= link_to "Answers"+'('+review.answers.count.to_s+')', review_path(review)  %>
   <% end %>
+</span>
 
 </li>
