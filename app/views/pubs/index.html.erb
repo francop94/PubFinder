@@ -1,9 +1,9 @@
       <% provide(:title, "All pubs") %>
       <ol class="pubs">
-	<%for pub in Pub.all %>
-	<% if pub.validated%>
-        <%= render pub %>
-    	<%end%>
-	<%end%> 
+		<%for pub in Pub.all %>
+			<% if pub.validated%>
+        		<%= render pub %>
+    		<%end%>
+		<%end%> 
         <%= will_paginate @pubs %>
       </ol>

@@ -1,43 +1,95 @@
 <% provide(:title, @pub.name) %>
-  <% if logged_in? && current_user == @pub.user%>
+<% if logged_in? && current_user == @pub.user%>
   You are the owner of this pub!
-<% if !@pub.validated %> The pub still has to be validated by the administrator!
-<% end %>
-    <%= link_to "Upload menu", new_pub_menu_path(@pub), class: 'btn btn-primary'  %>
-    <% if @pub.menu %>
+  <br>
+  <% if !@pub.validated %> The pub still has to be validated by the administrator!
+  <% end %>
+
+<%= link_to "Upload menu", new_pub_menu_path(@pub), class: 'btn btn-primary'  %>
+  <% if @pub.menu %>
     <%= link_to "Delete menu", pub_menu_path(@pub, @pub.menu), method: :delete,
                                   data: { confirm: "You sure?" }, class: 'btn btn-primary' %>
   <% end %>
-    <% end %>
-    <% if @pub.menu %>
-        <%= link_to "See menu", @pub.menu.document.url, class: 'btn btn-primary', target: '_blank'%> 
-        <% end %>
+<% end %>
+
+<% if current_user.admin? or current_user == @pub.user %>
+    <%= link_to "Delete this pub", @pub, method: :delete, class: 'btn btn-primary' %>
+    <%= link_to "Edit pub's informations", edit_pub_path(@pub), class: 'btn btn-primary'  %>
+<% end %>
+
+
+
+
 <div class="row">
-  <aside class="col-md-6">
-    <section class="pub_info">
+  <aside class="col-md-12">
       <h1>
         <%= @pub.name %>
+        <br>
         <%= @pub.address %>
         <br>
+        <%= @pub.description %>
+        <br>
+        spazio per link
+        <h2>
+        <br>
         This pub was visited <%= pluralize((@pub.visited_pubs.count), "time") %>
+        <br>
         Ratings:<%= @pub.avg_votes %>/5
+        </h2>
         </h1>
-    </section>
   </aside>
-  
-  <% if logged_in? && current_user == @pub.user%>
+</div>
+
+<div align="center">
+    <% if !current_user.admin? && current_user != @pub.user %>
+    <% if current_user.favorites.include?(@pub) %>
+    <%= link_to "Unfavorite", favorite_pub_path(@pub, type: "unfavorite"), method: :put, class: 'btn btn-primary'%>
+    <% else %>
+      <%= link_to "Favorite",   favorite_pub_path(@pub, type: "favorite"), method: :put, class: 'btn btn-primary' %>
+    <% end %>
+    <% if current_user.visiteds.include?(@pub) %>
+  <%= link_to "I have not been here!",   visited_pub_path(@pub, type: "not visited"), method: :put, class: 'btn btn-primary' %>
+  <% else %>
+  <%= link_to "I have been here!",   visited_pub_path(@pub, type: "visited"), method: :put, class: 'btn btn-primary' %>
+  <% end %> 
+  <% end %>
+      <% if @pub.menu %>
+        <%= link_to "See menu", @pub.menu.document.url, class: 'btn btn-primary', target: '_blank'%> 
+        <% end %>
+</div>
+
   <div class="row">
     <aside class="col-md-4">
+    <% if logged_in? && current_user == @pub.user%>
       <section class="user_info">
       </section>
       <section class="micropost_form">
         <%= render 'shared/micropost_form' %>
       </section>
+    <% end %>
     </aside>
-  </div>
-<% else %>
-<% end %>
-    <div class="col-md-8">
+
+    <aside class="col-md-2">
+    </aside>
+
+
+    <aside class="col-md-4">
+    <% if logged_in? && !current_user?(@pub.user)%>
+      <section class="review_form">
+        <%= render 'shared/review_form' %>
+      </section>
+      <% end %>
+    </aside>
+
+        <aside class="col-md-2">
+    </aside>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-6">
     <% if @pub.microposts.any? %>
       <h3>Microposts (<%= @pub.microposts.count %>)</h3>
       <ol class="microposts">
@@ -46,33 +98,8 @@
       <%= will_paginate @microposts%>
     <% end %>
   </div>
-</div>
-<% if logged_in? && !current_user?(@pub.user)%>
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="review_form">
-        <%= render 'shared/review_form' %>
-      </section>
-    </aside>
-    <% if !current_user.admin?%>
-    <% if current_user.favorites.include?(@pub) %>
-    <%= link_to "Unfavorite", favorite_pub_path(@pub, type: "unfavorite"), method: :put, class: 'btn btn-primary'%>
-    <% else %>
-      <%= link_to "Favorite",   favorite_pub_path(@pub, type: "favorite"), method: :put, class: 'btn btn-primary' %>
-    <% end %>
-  </div>
-  <div>
-  <% if current_user.visiteds.include?(@pub) %>
-  <%= link_to "I have not been here!",   visited_pub_path(@pub, type: "not visited"), method: :put, class: 'btn btn-primary' %>
-  <% else %>
-  <%= link_to "I have been here!",   visited_pub_path(@pub, type: "visited"), method: :put, class: 'btn btn-primary' %>
-  <% end %> 
-  </div>
-<% else %>
-<% end %>
-<% end %>
 
-  <div class="col-md-12">
+  <div class="col-md-6">
     <% if @pub.reviews.any? %>
       <h3>Reviews (<%= @pub.reviews.count %>)</h3>
       <ol class="reviews">
@@ -81,8 +108,4 @@
       <%= will_paginate @reviews %>
     <% end %>
   </div>
-
-<% if current_user.admin? or current_user == @pub.user %>
-    <%= link_to "Delete this pub", @pub, method: :delete, class: 'btn btn-primary'  %>
-    <%= link_to "Edit pub's informations", edit_pub_path(@pub), class: 'btn btn-primary'  %>
-<% end %>
+</div>

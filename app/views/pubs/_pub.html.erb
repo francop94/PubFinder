@@ -1,9 +1,6 @@
 <li id="pub-<%= pub.id %>">
   <span class="pub"><%= link_to pub.name, pub %></span>
   <span class="address"><%= pub.address %></span>
-  <span class="timestamp">
-    Created <%= time_ago_in_words(pub.created_at) %> ago.
-  </span>
     <% if current_user.admin? %>
     | <%= link_to "delete", pub, method: :delete,
                                   data: { confirm: "You sure?" } %>
