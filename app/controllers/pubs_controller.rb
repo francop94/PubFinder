@@ -22,8 +22,8 @@ class PubsController < ApplicationController
     
     @micropost = current_user.microposts.build if logged_in?
     @review = current_user.reviews.build if logged_in?
-    @microposts = @pub.microposts.paginate(page: params[:page], :per_page => 15)
-    @reviews = @pub.reviews.paginate(page: params[:page], :per_page => 15)
+    @microposts = @pub.microposts.paginate(page: params[:page], :per_page => 10)
+    @reviews = @pub.reviews.paginate(page: params[:page], :per_page => 10)
 
   end
 

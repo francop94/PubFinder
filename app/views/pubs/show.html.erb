@@ -25,17 +25,15 @@
       <h1>
         <%= @pub.name %>
         <br>
-        <%= @pub.address %>
-        <br>
-        <%= @pub.description %>
-        <br>
-        spazio per link
-        <h2>
+        <h2> <%= @pub.address %> </h2>
+        <h2> <%= @pub.description %> </h2>
+        <h3>
+        <%= link_to "Visit website", "http://"+@pub.website %>
         <br>
         This pub was visited <%= pluralize((@pub.visited_pubs.count), "time") %>
         <br>
         Ratings:<%= @pub.avg_votes %>/5
-        </h2>
+        </h3>
         </h1>
   </aside>
 </div>
