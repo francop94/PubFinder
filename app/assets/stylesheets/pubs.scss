@@ -15,31 +15,15 @@
   }
   .address {
     display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
+  }
+  .name {
+    color: #red;
     }
-  }
-  .timestamp {
-    color: #gray-light;
-    display: block;
-    margin-left: 60px;
-  }
-
-
 }
 
 aside {
   textarea {
     height: 100px;
     margin-bottom: 5px;
-  }
-}
-
-span.picture {
-  margin-top: 10px;
-  input {
-    border: 0;
   }
 }

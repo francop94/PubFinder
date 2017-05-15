@@ -19,6 +19,17 @@ section {
 textarea {
   resize: vertical;
 }
+.container {
+
+    padding-right: 15px;
+
+    padding-left: 15px;
+
+    margin-right: auto;
+
+    margin-left: auto;
+
+}
 
 .center {
   text-align: center;
@@ -38,10 +49,12 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+
+
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -109,15 +122,9 @@ $gray-medium-light: #eaeaea;
 
 /* miscellaneous */
 
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
+
 aside {
-  section.user_info {
+    section.user_info {
     margin-top: 20px;
   }
   section {
