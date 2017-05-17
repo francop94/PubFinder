@@ -13,11 +13,11 @@
 <% end %>
 
 <% if current_user.admin? or current_user == @pub.user %>
-    <%= link_to "Delete this pub", @pub, method: :delete, class: 'btn btn-primary' %>
+    <%= link_to "Delete this pub", @pub, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-primary' %>
+<% if !current_user.admin? or current_user == @pub.user %>
     <%= link_to "Edit pub's informations", edit_pub_path(@pub), class: 'btn btn-primary'  %>
 <% end %>
-
-
+<% end %>
 <%= content_tag :div, '', id: 'mycontainer', data: { source: @pub.address } %>
 
 <head>
@@ -129,7 +129,7 @@
 
 
     <aside class="col-md-4">
-    <% if logged_in? && !current_user?(@pub.user)%>
+    <% if logged_in? && !current_user?(@pub.user) && !current_user.admin?%>
       <section class="review_form">
         <%= render 'shared/review_form' %>
       </section>

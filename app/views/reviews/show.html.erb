@@ -9,7 +9,7 @@
       </ol>
     <% end %>
   </div>
-
+<% if !current_user.admin?%>
 <div class="row">
 <aside class="col-md-4">
       <section class="review_form">
@@ -17,4 +17,4 @@
       </section>
     </aside>
 </div>
-
+<%end%>

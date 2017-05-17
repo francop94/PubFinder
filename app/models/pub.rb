@@ -5,11 +5,6 @@ class Pub < ApplicationRecord
   validates :user_id, presence: true
   validates :address, presence: true
   validates :name, presence: true
-
-geocoded_by :address
-after_validation :geocode
-
-
   has_many :favorite_pubs
   has_many :favorited_by, through: :favorite_pubs, source: :user
 

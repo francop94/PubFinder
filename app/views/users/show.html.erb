@@ -8,6 +8,6 @@
     </section>
   </aside>
 </div>
-<% if current_user?(@user) %> 
+<% if current_user?(@user) && !current_user.admin?%> 
 <%= link_to "Create your own pub", new_pub_path, class: "btn btn-lg btn-primary" %>
 <% end %>

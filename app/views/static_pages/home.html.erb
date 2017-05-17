@@ -31,9 +31,10 @@
   </div>
 
   <% end %>
+ <% @pubs=Pub.all.reject{|pub| pub.validated} %>
 
- <% if logged_in? && current_user.admin? %>
-      <h3>Pubs still to validate </h3>
+ <% if logged_in? && current_user.admin?%>
+      <h3>Pubs still to validate (<%= @pubs.count %>)</h3>
 	<ul class="pubs">
 	<%for pub in Pub.all %>
 	<% if !pub.validated%>
