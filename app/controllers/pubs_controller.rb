@@ -7,15 +7,19 @@ class PubsController < ApplicationController
   end
 
   def create
-  	@pub = current_user.pubs.build(pub_params)
-  	if @pub.save
-  		flash[:success] = "Your pub was created!"
-  		redirect_to root_url
-  	else
-                flash[:danger] = "Error in creating the pub!"
+    @pub = Pub.new
+    if (!params[:pub][:name].present? or params[:pub][:address].nil?)
+        
+      flash[:danger] = "Error in creating the pub!"
   		render 'new'
-  	end
+  	else
+    @pub = current_user.pubs.create(pub_params)
+    if @pub.save
+      flash[:success] = "Your pub was created!"
+      redirect_to root_path
+    end
   end
+end
 
   def show
     @pub = Pub.find(params[:id])
