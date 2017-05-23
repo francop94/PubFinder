@@ -1,11 +1,24 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'capybara/rails'
+require 'rails/capybara'
+
+Capybara.javascript_driver = :webkit
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
+
+  DatabaseCleaner.strategy = :transaction
+
+  before do
+    DatabaseCleaner.start
+    Rake::Task["db:seed"].invoke # seed after starting
+  end
+
+  after do
+    DatabaseCleaner.clean
+  end
 
   def is_logged_in?
     !session[:user_id].nil?

@@ -14,8 +14,7 @@
 #
 
 
-require 'capybara/rspec'
-
+require "rack_session_access/capybara"
 
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
@@ -33,6 +32,7 @@ RSpec.configure do |config|
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
+
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|

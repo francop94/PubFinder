@@ -10,12 +10,12 @@
         <% if logged_in? %>
           <% if @current_user.pubs.count > 0 %>
             <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="your_pubs">
               Your pubs <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <% for pub in @current_user.pubs %>
-              <li><%= link_to pub.name, pub_path(pub.id.to_s) %></li>
+              <li><a href=<%=pub_path(pub.id.to_s)%> id="pub"> <%= pub.name %> </a></li>
               <% end %>
             </ul>
           </li>
