@@ -15,7 +15,6 @@ gem 'puma', '~> 3.0'
 gem 'bcrypt',         '3.1.11'
 gem 'faker',          '1.6.6'
 gem 'geocoder'
-gem 'capybara'
 gem "paperclip", "~> 5.0.0"
 
 # Use SCSS for stylesheets
@@ -66,6 +65,7 @@ group :test do
   gem 'guard',                    '2.13.0'
   gem 'guard-minitest',           '2.4.4'
   gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
 end
 
 group :production do
