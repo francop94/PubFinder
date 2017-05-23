@@ -14,7 +14,7 @@
 
  <% if logged_in? && !current_user.admin? %>
  <div class="col-md-8">
-    <% if current_user.favorites.count > 0 %>
+    <% if current_user.favorites.count >= 0 %>
       <h3>Your favorite pubs (<%= current_user.favorites.count %>)</h3>
       <ol class="favorites">
         <%= render @current_user.favorites %>
@@ -22,8 +22,8 @@
     <% end %>
   </div>
    <div class="col-md-8">
-    <% if current_user.visiteds.count > 0 %>
-      <h3>Your visited this pubs (<%= current_user.visiteds.count %>)</h3>
+    <% if current_user.visiteds.count >= 0 %>
+      <h3>Your visited pubs (<%= current_user.visiteds.count %>)</h3>
       <ol class="visiteds">
         <%= render @current_user.visiteds %>
       </ol>

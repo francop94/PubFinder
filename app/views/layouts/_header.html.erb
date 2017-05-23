@@ -23,7 +23,7 @@
           <li><%= link_to "Users", users_path %></li>
           <li><%= link_to "All pubs", pubs_path %></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="account">
               Account <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
@@ -32,7 +32,7 @@
               <li class="divider"></li>
               <li>
                 
-                <li><a href="/logout" data-method="delete" ><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                <li><a href="/logout" data-method="delete" id="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
                 </li>
               </li>
             </ul>
