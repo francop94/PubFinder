@@ -5,15 +5,15 @@ class MicropostsController < ApplicationController
   def create
   	@pub = Pub.find(params[:pub_id])
   	input = micropost_params.merge(pub: @pub)
-    @micropost = current_user.microposts.build(input)
-    #@micropost.pub_id= $pub.id
-    if @micropost.save
-      flash[:success] = "Micropost created!"
-      redirect_to(:back)
-    else
-      render 'static_pages/home'
-      print (@pub.nil?)
-    end
+        @micropost = current_user.microposts.build(input)
+        #@micropost.pub_id= $pub.id
+        if @micropost.save
+      		flash[:success] = "Micropost created!"
+      		redirect_to(:back)
+        else
+       		flash[:danger] = "Micropost's content can't be blank. Micropost was not created!"
+      		redirect_to pub_path(@micropost.pub)
+    	end
   end
 
     def destroy

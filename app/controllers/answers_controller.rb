@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
       flash[:success] = "Answer created!"
       redirect_to(:back)
     else
-      flash[:danger] = "Answer not posted, the content should have at least 20 characters."
+      flash[:danger] = "Answer not posted, the content should have at least 10 characters."
       redirect_to(:back)
     end
   end

@@ -1,4 +1,5 @@
-<%= render @review.user%> 
+<%= link_to @review.user.name, @review.user %>
+<br>
 <span class="content"><%= @review.content %></span>
 <br>
 <div class="col-md-0">
