@@ -15,7 +15,7 @@ gem 'puma', '~> 3.0'
 gem 'bcrypt',         '3.1.11'
 gem 'faker',          '1.6.6'
 gem 'geocoder'
-
+gem 'capybara'
 gem "paperclip", "~> 5.0.0"
 
 # Use SCSS for stylesheets
