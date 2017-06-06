@@ -1,6 +1,6 @@
 class PubsController < ApplicationController
 	before_action :logged_in_user, only:[:create, :index, :update, :destroy, :edit]
-  before_action :admin_user,     only: :destroy
+  before_action :admin_user && :logged_in_user,     only: :destroy
 
   def new
   	@pub = Pub.new
